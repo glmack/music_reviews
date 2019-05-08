@@ -1,2 +1,5 @@
 def vectorize(corpus):
-    return [word_tokenize(doc) for doc in documents]
+    """learns vocab dictionary and returns feature names and term-document matrix"""
+    vectorizer = CountVectorizer(lowercase=False)
+    X = vectorizer.fit_transform(documents)
+    return vectorizer.get_feature_names(), X.toarray()
