@@ -1,5 +1,6 @@
 import numpy as np
 from math import sqrt
+from statsmodels.stats.weightstats import ztest
 
 def sample_var(x1, x2):
     '''Returns sample variance value for 2-samples'''
@@ -42,7 +43,9 @@ def get_author_scores(list_of_dict):
 
 
 def get_biased_authors(authors_dict, pop_mean, pop_std, alpha):
-    
+    '''Apply z-test to samples retrieved from authors_dict.
+    Returns a list of author names where the null hypothesis of
+    the z-test was rejected'''
     biased_authors = []
     
     for key, value in authors_dict.items():
@@ -55,6 +58,23 @@ def get_biased_authors(authors_dict, pop_mean, pop_std, alpha):
             biased_authors.append([key, z])
 
     return biased_authors
-            
+
+def get_biased_authors_2v(authors_dict, pop_mean, alpha):
+    '''Apply statsmodels library's z-test to samples retrieved from authors_dict.
+    Returns a list of author names where the null hypothesis of
+    the z-test was rejected'''
+    
+    biased_authors = []
+    
+    for key, value in authors_dict.items():
+        scores = value['scores']
+        
+    z_statistic, p_value = ztest(scores, value=pop_mean)
+    
+    if p_value < alpha:
+        print('Reject null hypothesis')
+        biased_authors.append([key])   
+    
+    return biased_authors
             
     
