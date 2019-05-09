@@ -17,4 +17,44 @@ def sample_var(x1, x2):
 def twosample_tstatistic(x1, x2):
     '''Returns t-statistic value for 2-samples test'''
     return (x1.mean() - x2.mean()) / sqrt(sample_var(x1, x2) * (1/len(x1) + 1/len(x2)) )
+
+def get_author_scores(list_of_dict):
+    '''Iterate throught a list of dictionaries representing dataframe's rows and returns a dictionary with
+    author names and a list of scores ordered by date'''
+    
+    authors_scores = {}
+    
+    for i in list_of_dict:
+        
+        if i['author'] in authors_scores.keys():
+            #update dictionary values for this author
+            authors_scores[i['author']]['scores'].append(i['score'])
+            authors_scores[i['author']]['dates'].append(i['pub_date'])
+        
+        else:
+            #add this author name to authors_scores keys
+            authors_scores[i['author']] = {'scores': [], 'dates': []}
+
+            authors_scores[i['author']]['scores'].append(i['score'])
+            authors_scores[i['author']]['dates'].append(i['pub_date'])
+        
+    return authors_scores
+
+
+def get_biased_authors(authors_dict, pop_mean, pop_std, alpha):
+    
+    biased_authors = []
+    
+    for key, value in authors_dict.items():
+        sample_mean = np.mean(value['scores'])
+        
+        z = (sample_mean - pop_mean) / pop_std/sqrt(len(value['scores']))        
+
+        if z < -1.96 or z > 1.96:
+            print('Reject null hypothesis')
+            biased_authors.append([key, z])
+
+    return biased_authors
+            
+            
     
