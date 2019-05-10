@@ -69,11 +69,10 @@ def get_biased_authors(authors_dict, pop_mean, alpha):
     for key, value in authors_dict.items():
         scores = value['scores']
         
-    z_statistic, p_value = ztest(scores, value=pop_mean)
-    
-    if p_value < alpha:
-        print('Reject null hypothesis')
-        biased_authors.append([key])   
+        z_statistic, p_value = ztest(scores, value=pop_mean)
+
+        if p_value < alpha:
+            biased_authors.append([key])   
     
     return biased_authors
 
@@ -87,15 +86,15 @@ def get_biased_authors_with_samples(authors_dict, pop_mean, alpha):
     biased_authors = []
     
     for key, value in authors_dict.items():
-        scores = value['scores']
+        
+        scores = np.array(value['scores'])
     
-    sample =  np.random.choice(scores, 50)   
-    
-    z_statistic, p_value = ztest(sample, value=pop_mean)
-    
-    if p_value < alpha:
-        print('Reject null hypothesis')
-        biased_authors.append([key])   
+        sample = np.random.choice(scores, 50) 
+
+        z_statistic, p_value = ztest(sample, value=pop_mean)
+
+        if p_value < alpha:
+            biased_authors.append([(key, p_value)])   
     
     return biased_authors
             
