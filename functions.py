@@ -98,4 +98,31 @@ def get_biased_authors_with_samples(authors_dict, pop_mean, alpha):
     
     return biased_authors
             
+
+
+    
+    
+#functions used in McNemar test
+    
+def process_row(row):
+    """for each row in array, returns array representing one of four categories"""
+    if row[0] == row[1] and row[0] == row[2]: # 
+        result = [1,0,0,0]
+    
+    elif row[0] == row[1]:
+        result = [0,1,0,0]
+        
+    elif row[0] == row[2]:
+        result = [0,0,1,0]
+        
+    else:
+        result = [0,0,0,1]
+    
+    return np.array(result)
+
+
+def process_ndarray(array):
+    '''Returns a numpy array suitable for McNemar test'''
+    result = sum([process_row(row) for row in array])
+    return np.array([[result[0], result[2]], [result[1], result[3]]])
     
