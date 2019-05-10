@@ -4,7 +4,7 @@
 
 ## Structure
 
-**Working jupyter notebook**: [link]()
+**Working Jupyter notebook**: [link]()
 
 **Presentation**: [link]()
 
@@ -13,7 +13,7 @@ Functions used in the jupyter notebook can be found in the `functions.py` file.
 
 ## Project overview
 
-**Project goal**: explore Pitchfork Apply different methods of hypothesis testing to [music reviews dataset](https://www.kaggle.com/nolanbconaway/pitchfork-data) to produce valuable insights.
+**Project goal**: Explore Pitchfork music review dataset and apply different methods of hypothesis testing to [music reviews dataset](https://www.kaggle.com/nolanbconaway/pitchfork-data) to produce valuable insights.
 
 **Data exploration**
 
@@ -25,25 +25,26 @@ We used SQL commands for data querying and exploration as well as `pandas` libra
 
 We explored the relationships between music genres, authors and review scores.
 
-We conducted 3 standard statistical test to answer the following questions:
+We conducted 3 standsrd statistical tests to answer the following questions:
 
 - Is there a statistical difference between 'metal' and 'jazz' music genres?
 - If the same person does the review, does he/she score genres differently, in particular, 'metal' and 'jazz' genres?
-- Looking at the scores produced by one author, are they different from the average scores given by the total of aythors? That, is any of the authors biased?
+- Looking at the scores produced by one author, are they different from the average scores given by the total of authors?
 
-To answer these questions we used Student t-test as well as a z-test to produce p-value necessary to reject or accept null hypothesis. Chosen level of confidence was 95%. The reason to choose this level is that we wanted to leave a reasonable margin considering:
+To answer these questions we used Student t-test as well as a z-test to produce p-values necessary to reject or accept null hypothesis. Chosen level of confidence was 95%. The reason to choose this level was to leave a reasonable margin of error considering:
 
 - Subjective nature of reviewing music albums (thus, we cannot make a confidence interval too high)
 
 - We wanted to be reasonably certain in our evaluations
 
+
 To peform t-test and z-test we assumed that data is:
 
-- Approximately normally distribuited: we checked the distribution plotting a histogram.
+- Approximately normally distribuited: we checked the distribution plotting histograms.
     
 - Collected randomly: we collected random samples for each test.
     
-- The observations are independent: we can assume that the observations are independent.
+- The observations are independent: there is no reason to believe that the observations are not independent.
 
 
 ## Findings
@@ -72,7 +73,7 @@ Confidence level: 95%
 
 The resulting p-value of p-value is:  0.953 was higher than out significance level aplha=0.05, so we could not reject the null hypothesis.
 
-### Question 3: Looking at the scores produced by one author, are they different from the average scores given by the total of aythors? That, is any of the authors biased?
+### Question 3: Looking at the scores produced by one author, are they different from the average scores given by the total of authors? 
 
 To answer that question we looked at reviews made by each particular author, and selected those that did more than 50 reviews. Fewer amount of reviews per author would have less normally distribuited data.
 
