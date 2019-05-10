@@ -81,3 +81,26 @@ To answer that question we looked at reviews made by each particular author, and
 To perform the statistical test, we created a custom-built function that looped through the scores of each author, created a 50 data points random sample and applied the z-test on each sample. The function returned a list of authors, where p-value was lower than alpha level, implying that those are the authors that give higher or lower average review score comparing to the average score of the dataset.
 
 In this series of experiments 36 out of 85 (around 40%) authors have highter or lower average review score than the average of all dataset.
+
+### Question 4: Do the naive bayes classifier and the support vector machine agree in their discrete predictions of music genres, as either rock or non-rock
+
+This workflow uses a McNemar statistic to compare two classification algorithms, a naive bayes classifier and a support vector machine, on a binomial document text classification task using a common corpus of 20,000 music reviews. The objectives of this workflow, which are part of a larger project, are to a) explore and test hypotheses on text classification algorithms on common domains, in terms of relative performance advantages in different scenarios, and b) explore test statistics for comparison of text classification algorithms in varied contexts. The question that we sought to answer is whether the naive bayes classifier and the support vector machine agreed in their discrete predictions of music genres, as either rock or non-rock.
+
+##### Data and & Text representation
+We asked this question of 20,000 music reviews, which were roughly evenly divided between rock music reviews and, on the other hand, non-rock music reviews that we created from reviews representing multiple genres.
+The vocabulary, later limited to 1000 salient words, were tokenized, trained and represented through tf-idf (term frequency inverse document frequency) using sci-kit learn
+
+##### Models
+The models used for comparison were a naive bayes classifier and a support vector machine, using scikit-learn implementation.
+
+##### Study Design
+The null hypothesis for this test, following Dror et al, is that the marginal probability for each outcome (label ‘rock or label ‘not_rock”) is the same for both algorithms. When applying both algorithms on the same music reviews, we expect them to be correct/incorrect on the same proportion of items. 
+Test Statistic: This test used statsmodel’s implementation of the McNemar’s statistic, a non-parametric statistic for use in comparing two classifiers on one common domain. This test is appropriate for binary classification tasks on a common domain. The McNemar test has been used in such NLP works and, following Japkowicz, can be thought of as the “non-parametric counterpart of the t-test”. 
+The finding: was that the two models did not “agree” in their predictions. he marginal probability of each outcome was not the same for both algorithms.
+
+The primary resources consulted in developing this readme include:
+Japkowicz and Shah. 2011. Evaluating Learning Algorithms: A Classification Perspective.
+Japkowicz. Performance Evaluation for Learning Algorithms. Presentation. https://www.icmla-conference.org/icmla11/PE_Tutorial.pdf
+Dror, Rotem; Baumer Segev Shlomov Roi Reichart. 2018. The Hitchhiker’s Guide to Testing Statistical Significance in Natural Language Processing
+Raschka, Sebastian. Model Evaluation, Model Selection, and Algorithm Selection in Machine Learning
+Dietterich. 1997. Approximate Statistical Tests for Comparing Supervised Classification Learning Algorithms.	
