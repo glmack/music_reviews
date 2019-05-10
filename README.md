@@ -4,7 +4,8 @@
 
 ## Structure
 
-**Working Jupyter notebook**: [link]()
+**Jupyter notebook for questions 1-3**: [link](https://github.com/glmack/music_reviews/blob/master/tests_1_to_3.ipynb)
+**Jupyter notebook for classification algorithms testing**:
 
 **Presentation**: [link]()
 
