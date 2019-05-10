@@ -31,10 +31,11 @@ We conducted 3 standard statistical test to answer the following questions:
 - If the same person does the review, does he/she score genres differently, in particular, 'metal' and 'jazz' genres?
 - Looking at the scores produced by one author, are they different from the average scores given by the total of aythors? That, is any of the authors biased?
 
-To answer these questions we used Student t-test as well as a z-test to produce p-value necessary to reject or accept null hypothesis. Chosen level of confidence was 95%. The reason to choose this level is that we wanted to leave a reasonable margin of error to optimize for:
+To answer these questions we used Student t-test as well as a z-test to produce p-value necessary to reject or accept null hypothesis. Chosen level of confidence was 95%. The reason to choose this level is that we wanted to leave a reasonable margin considering:
 
-a) subjective nature of reviewing music albums (there are no fixed guidelinies on how to evaluate music, thus, we cannot make a confidence interval too high)
-b) we wanted to be reasonably certain in our evaluations
+- Subjective nature of reviewing music albums (thus, we cannot make a confidence interval too high)
+
+- We wanted to be reasonably certain in our evaluations
 
 To peform t-test and z-test we assumed that data is:
 
@@ -75,6 +76,6 @@ The resulting p-value of p-value is:  0.953 was higher than out significance lev
 
 To answer that question we looked at reviews made by each particular author, and selected those that did more than 50 reviews. Fewer amount of reviews per author would have less normally distribuited data.
 
-For the statistical test from each author we took a sample from each of those authors and applied the custom-built function that looped through the data, created a sample and applied the z-test on each sample. The function returned a list of authors, where p-value was lower than alpha level, implying that those are the authors that give higher or lower average review score than average of all scores across the dataset.
+To perform the statistical test, we created a custom-built function that looped through the scores of each author, created a 50 data points random sample and applied the z-test on each sample. The function returned a list of authors, where p-value was lower than alpha level, implying that those are the authors that give higher or lower average review score comparing to the average score of the dataset.
 
-Considering we treated the Pitchfork data as population, we can generalize and say that around 40% of authors give higher or lower review score than average within Pitchfork dataset.
+In this series of experiments 36 out of 85 (around 40%) authors have highter or lower average review score than the average of all dataset.
