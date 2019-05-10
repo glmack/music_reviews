@@ -42,7 +42,7 @@ def get_author_scores(list_of_dict):
     return authors_scores
 
 
-def get_biased_authors(authors_dict, pop_mean, pop_std, alpha):
+def get_biased_authors_manual(authors_dict, pop_mean, pop_std, alpha):
     '''Apply z-test to samples retrieved from authors_dict.
     Returns a list of author names where the null hypothesis of
     the z-test was rejected'''
@@ -59,8 +59,8 @@ def get_biased_authors(authors_dict, pop_mean, pop_std, alpha):
 
     return biased_authors
 
-def get_biased_authors_2v(authors_dict, pop_mean, alpha):
-    '''Apply statsmodels library's z-test to samples retrieved from authors_dict.
+def get_biased_authors(authors_dict, pop_mean, alpha):
+    '''Apply statsmodels library's z-test to values retrieved from authors_dict.
     Returns a list of author names where the null hypothesis of
     the z-test was rejected'''
     
@@ -70,6 +70,28 @@ def get_biased_authors_2v(authors_dict, pop_mean, alpha):
         scores = value['scores']
         
     z_statistic, p_value = ztest(scores, value=pop_mean)
+    
+    if p_value < alpha:
+        print('Reject null hypothesis')
+        biased_authors.append([key])   
+    
+    return biased_authors
+
+
+
+def get_biased_authors_with_samples(authors_dict, pop_mean, alpha):
+    '''Apply statsmodels library's z-test to random samples of the values retrieved
+    from authors_dict. Returns a list of author names where the null hypothesis of
+    the z-test was rejected'''
+    
+    biased_authors = []
+    
+    for key, value in authors_dict.items():
+        scores = value['scores']
+    
+    sample =  np.random.choice(scores, 50)   
+    
+    z_statistic, p_value = ztest(sample, value=pop_mean)
     
     if p_value < alpha:
         print('Reject null hypothesis')

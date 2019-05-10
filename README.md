@@ -2,9 +2,16 @@
 
 **Team**: [Lee Mackey](https://github.com/glmack) and [Anna Zubova](https://github.com/AnnaLara)
 
-**Working notebook**: 
+## Structure
 
-**Presentation**:
+**Working jupyter notebook**: [link]()
+
+**Presentation**: [link]()
+
+Functions used in the jupyter notebook can be found in the `functions.py` file.
+
+
+## Project overview
 
 **Project goal**: explore Pitchfork Apply different methods of hypothesis testing to [music reviews dataset](https://www.kaggle.com/nolanbconaway/pitchfork-data) to produce valuable insights.
 
@@ -16,7 +23,7 @@ We used SQL commands for data querying and exploration as well as `pandas` libra
 
 **Hypothesis testing**
 
-We explored the relationships between music genres, authors and review scores to see if there is patterns that define ?????
+We explored the relationships between music genres, authors and review scores.
 
 We conducted 3 standard statistical test to answer the following questions:
 
@@ -33,18 +40,16 @@ b) we wanted to be reasonably certain in our evaluations
 
 To peform t-test and z-test we assumed that data is:
 
-- Approximately normally distribuited
-    We checked the distribution plotting a histogram
+- Approximately normally distribuited: we checked the distribution plotting a histogram.
     
-- Collected randomly
-    We collected random samples in the case where we applied t-test. In case of a z-test, we treated the review scores or each author as samples, even if they were not chosen randomly. The reason for that is that we precicely wanted to see if the means are reflective of the population assuming they belong to a single author.
+- Collected randomly: we collected random samples for each test.
     
-- The observations are independent
-    We can assume that the observations are independent.
+- The observations are independent: we can assume that the observations are independent.
 
 **Findings**
 
-Throughout the analysis we dicovered that
+Throughout the analysis we dicovered that these are the answer to the questions :
+
 1. There is statistical difference between review scores of 'metal' genre and 'jazz' genre.
 2. However, when the same person does the review, they do not assign different scores to 'metal' and 'jazz' genres.
 3. The reviewers have no particular bias towards assigning higher or lower score in general comparing to mean dataset score. 
