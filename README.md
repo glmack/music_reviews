@@ -7,7 +7,7 @@
 **Jupyter notebook for questions 1-3**: [link](https://github.com/glmack/music_reviews/blob/master/tests_1_to_3.ipynb)
 **Jupyter notebook for classification algorithms testing**:
 
-**Presentation**: [link]()
+**Presentation**: [link](https://docs.google.com/presentation/d/1SeczrIDfq1cEGCOKwxKE1LMpYVLcog686coTyoyuS88/edit#slide=id.g59f5cd01eb_0_16)
 
 Functions used in the jupyter notebook can be found in the `functions.py` file.
 
