@@ -5,7 +5,8 @@
 ## Structure
 
 **Jupyter notebook for questions 1-3**: [link](https://github.com/glmack/music_reviews/blob/master/tests_1_to_3.ipynb)
-**Jupyter notebook for classification algorithms testing**:
+
+**Jupyter notebook for classification algorithms testing**: [link](https://github.com/glmack/music_reviews/blob/master/binomial_pitchfork_content_sandbox-Copy1.ipynb)
 
 **Presentation**: [link](https://docs.google.com/presentation/d/1SeczrIDfq1cEGCOKwxKE1LMpYVLcog686coTyoyuS88/edit#slide=id.g59f5cd01eb_0_16)
 
